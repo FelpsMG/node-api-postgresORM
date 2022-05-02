@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ViewEntity, Index} from "typeorm"
-import { Geometry, Point, MultiPolygon } from "geojson";
+import { Geometry } from "geojson";
 
 @Entity()
 export class User {

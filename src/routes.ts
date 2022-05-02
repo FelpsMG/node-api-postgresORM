@@ -9,7 +9,7 @@ export const Routes = [{
     validation: [],
 }, {
     method: "get",
-    route: "/users/:id",
+    route: "/users/id=?:id",
     controller: UserController,
     action: "one",
     validation: [
@@ -36,12 +36,12 @@ export const Routes = [{
 },
 {
     method: "get",
-    route: "/api/conforme/point/:long/:lat",
+    route: "/api/conforme/point/latitude=?:long/longitude=?:lat",
     controller: UserController,
     action: "find_intersection",
     validation: [
-        param('long').isFloat(),
-        param('lat').isFloat(),
+        param('long').isFloat().withMessage('longitude precisa ser um número real'),
+        param('lat').isFloat().withMessage('latitude precisa ser um número real'),
     ],    
 }
 ]
