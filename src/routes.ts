@@ -33,4 +33,15 @@ export const Routes = [{
     validation: [
         param('id').isInt(),
     ],
-}]
+},
+{
+    method: "get",
+    route: "/api/conforme/point/:long/:lat",
+    controller: UserController,
+    action: "find_intersection",
+    validation: [
+        param('long').isFloat(),
+        param('lat').isFloat(),
+    ],    
+}
+]

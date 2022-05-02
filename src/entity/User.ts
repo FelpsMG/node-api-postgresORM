@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ViewEntity, Index} from "typeorm"
+import { Geometry, Point, MultiPolygon } from "geojson";
 
 @Entity()
 export class User {
@@ -16,3 +17,39 @@ export class User {
     age: number
 
 }
+@Entity()
+export class socioambientais {
+
+    @PrimaryGeneratedColumn()
+    id: number
+
+    @Column()
+    gid: number
+
+    @Column({
+        type:"varchar",
+        length: 100,
+        collation: "default",
+    })
+    tipo: string
+
+    @Column({
+        type:"varchar",
+        length: 255,
+        collation: "default",
+    })
+    nome: string
+
+    @Column()
+    codigo: number
+
+    @Index({ spatial: true })
+    @Column({
+        type: 'geometry',
+        spatialFeatureType: 'MultiPolygon', 
+        srid: 4674,
+        nullable: true,
+    })
+    geom: Geometry
+}
+
